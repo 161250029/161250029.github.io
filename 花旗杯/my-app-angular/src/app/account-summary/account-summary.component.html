@@ -1,0 +1,252 @@
+<div class="header">
+    <div class="top-header">
+        <div class="account-box">
+            <div class="abbre-account-name">JK</div>
+            <div class="login-info">
+                <p class="welcome-box">
+                    Welcome, JASON KALINIC
+                </p>
+                <p class="last-login">Last login on 6th July 2018 08:2210</p>
+            </div>
+        </div>
+        <div class="search-box">
+            search
+            <span class="fa fa-search"></span>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="cell">
+            <span class="fa fa-home">
+                <div class="corner">1</div>
+            </span>
+            <p class="desc">overview</p>
+        </div>
+        <div class="cell">
+            <span class="fa fa-cog">
+                <div class="corner">3</div>
+            </span>
+            <p class="desc">Services and Profile</p>
+        </div>
+        <div class="cell">
+            <span class="fa fa-plus-circle">
+                <div class="corner">5</div>
+            </span>
+            <p class="desc">Transfers</p>
+        </div>
+        <div class="cell">
+            <span class="fa fa-balance-scale">
+            </span>
+            <p class="desc">Benifits and Products</p>
+        </div>
+        <div class="cell">
+            <span class="fa fa-phone">
+            </span>
+            <p class="desc">Contact Us</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="!isOpenAccountDetails">
+    <div class="operaters">
+        <div class="operater">
+            Sort Order
+        </div>
+        <div class="operater">
+            Expand/Collapse All
+        </div>
+        <div class="operater">
+            Currency: Account Currency
+        </div>
+    </div>
+    <div class="accordings" id="accordion">
+        <div class="item-wrapper" *ngIf="savings.accountGroup">
+            <div class="sup-item" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false">
+                <span class="fa fa-cog big"></span>
+                <p class="sup-item-title">{{savings.accountGroup}}({{savings.accounts?savings.accounts.length:''}})</p>
+                <span class="fa fa-chevron-down chevron"></span>
+                <span class="fa fa-chevron-up chevron hide"></span>
+                <div class="total-amount-box">
+                    <p class="amount-title">Total Available Amount</p>
+                    <p class="amount">{{savings.totalAvailableBalance.localCurrencyBalanceAmount}} {{savings.totalAvailableBalance.localCurrencyCode}}</p>
+                </div>
+            </div>
+            <div id="collapseOne" class="sub-items panel-collapse collapse" *ngIf="accountsArr.length > 0">
+                <div class="item" (click)="openAccountDetails(accountsArr[0].savingsAccountSummary.accountId)">
+                    <div class="left-info">
+                        <div class="account-title">{{accountsArr[0].savingsAccountSummary.productName}}
+                            <span class="account-num">{{accountsArr[0].savingsAccountSummary.displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Available Amount</p>
+                        <p class="amount">{{accountsArr[0].savingsAccountSummary.currencyCode}} {{accountsArr[0].savingsAccountSummary.currentBalance}}</p>
+                    </div>
+                </div>
+                <div class="item" (click)="openAccountDetails(accountsArr[1].savingsAccountSummary.accountId)">
+                    <div class="left-info">
+                        <div class="account-title">{{accountsArr[1].savingsAccountSummary.productName}}
+                            <span class="account-num">{{accountsArr[1].savingsAccountSummary.displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Available Amount</p>
+                        <p class="amount">{{accountsArr[1].savingsAccountSummary.currencyCode}} {{accountsArr[1].savingsAccountSummary.currentBalance}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="left-info">
+                        <div class="account-title">{{accountsArr[2].callDepositAccountSummary.productName}}
+                            <span class="account-num">{{accountsArr[2].callDepositAccountSummary.displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Available Amount</p>
+                        <p class="amount">{{accountsArr[2].callDepositAccountSummary.currencyCode}} {{accountsArr[2].callDepositAccountSummary.currentBalance}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="left-info">
+                        <div class="account-title">{{accountsArr[3].timeDepositAccountSummary.productName}}
+                            <span class="account-num">{{accountsArr[3].timeDepositAccountSummary.displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Available Amount</p>
+                        <p class="amount">{{accountsArr[3].timeDepositAccountSummary.currencyCode}} {{accountsArr[3].timeDepositAccountSummary.currentBalance}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="left-info">
+                        <div class="account-title">{{accountsArr[4].premiumDepositAccountSummary.productName}}
+                            <span class="account-num">{{accountsArr[4].premiumDepositAccountSummary.displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Available Amount</p>
+                        <p class="amount">{{accountsArr[4].premiumDepositAccountSummary.currencyCode}} {{accountsArr[4].premiumDepositAccountSummary.currentBalance}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="left-info">
+                        <div class="account-title">{{accountsArr[5].mutualFundAccountSummary.productName}}
+                            <span class="account-num">{{accountsArr[5].mutualFundAccountSummary.displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Available Amount</p>
+                        <p class="amount">{{accountsArr[5].mutualFundAccountSummary.currencyCode}} {{accountsArr[5].mutualFundAccountSummary.currentBalance}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="left-info">
+                        <div class="account-title">{{accountsArr[6].securitiesBrokerageAccountSummary.productName}}
+                            <span class="account-num">{{accountsArr[6].securitiesBrokerageAccountSummary.displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Available Amount</p>
+                        <p class="amount">{{accountsArr[6].securitiesBrokerageAccountSummary.currencyCode}} {{accountsArr[6].securitiesBrokerageAccountSummary.currentBalance}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item-wrapper" *ngIf="insurance.accountGroup">
+            <div class="sup-item" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false">
+                <span class="fa fa-cog big"></span>
+                <p class="sup-item-title">{{insurance.accountGroup}}({{insurance.insurancePolicies?insurance.insurancePolicies.length:''}})</p>
+                <span class="fa fa-chevron-down chevron"></span>
+                <span class="fa fa-chevron-up chevron hide"></span>
+                <div class="total-amount-box">
+                </div>
+            </div>
+            <div id="collapseTwo" class="sub-items panel-collapse collapse" *ngIf="insuranceArr.length > 0">
+                <div class="item">
+                    <div class="left-info">
+                        <div class="account-title">{{insuranceArr[0].productName}}
+                            <span class="account-num">{{insuranceArr[0].displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Premium Amount</p>
+                        <p class="amount">{{insuranceArr[0].currencyCode}} {{insuranceArr[0].totalPremiumPaidAmount}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="left-info">
+                        <div class="account-title">{{insuranceArr[1].productName}}
+                            <span class="account-num">{{insuranceArr[1].displayAccountNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="balance-box">
+                        <p class="balance-title">Total Premium Amount</p>
+                        <p class="amount">{{insuranceArr[1].currencyCode}} {{insuranceArr[1].totalPremiumPaidAmount}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isOpenAccountDetails">
+    <div class="wrapper-1200 account-details-wrapper">
+        <div class="back-to" (click)="backToSummary()">
+            <span class="fa fa-chevron-left"></span>
+            Back to Overview
+        </div>
+        <div class="main-info-box">
+            <div class="left-info-box">
+                <div class="img-box">
+                    <span class="fa fa-credit-card fa-5x"></span>
+                </div>
+                <div class="account-currency-type-wrapper">
+                    <div class="select-box">
+                        <span class="arrow fa fa-chevron-down"></span>
+                        <select class="my-select">
+                            <option value="{{accountDetails.productName}}">{{accountDetails.productName}}</option>
+                        </select>
+                    </div>
+                    <div class="account-num">{{accountDetails.displayAccountNumber}}
+                        <span class="fa fa-share-alt"></span>
+                    </div>
+                </div>
+                <div class="account-setting">
+                    <span class="fa fa-cog"></span>
+                    Account Setting
+                </div>
+            </div>
+            <div class="right-info-box">
+                <p class="balance-title">AVAILABLE BALANCE</p>
+                <p class="account-balance">{{accountDetails.availableBalance}} {{accountDetails.currencyCode}}</p>
+                <div class="my-button gold small">Transfer/Pay</div>
+            </div>
+        </div>
+        <div class="account-balance">Account Balance
+            <span class="bold-txt"> {{accountDetails.availableBalance}} {{accountDetails.currencyCode}}</span>
+        </div>
+        <div class="grey-bg-box">
+            <span class="bold-txt">Check how you can get PLN 2,000</span> for a Citigold Client referral.
+            <span class="link-txt">More details</span>
+        </div>
+    </div>
+    <div class="wrapper-1200 tansactions-wrapper">
+        <div class="transaction-nav">
+            <div class="transaction cell" (click)="switchTrasactionTab(0)" [ngClass]="{'active' : currentTransactionTab === 0}">Transaction</div>
+            <div class="onhold cell" (click)="switchTrasactionTab(1)" [ngClass]="{'active' : currentTransactionTab === 1}">On Hold</div>
+            <div class="scheduled-transaction cell" (click)="switchTrasactionTab(2)" [ngClass]="{'active' : currentTransactionTab === 2}">Scheduled Transaction</div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="filter-line">
+            <div class="cell txt-left">Date</div>
+            <div class="cell txt-left">Description</div>
+            <div class="search-filter">Search & filter
+                <span class="fa fa-search"></span>
+            </div>
+            <div class="cell txt-center">Amount</div>
+            <div class="cell txt-right">Balance</div>
+        </div>
+        <div class="result-wrapper">
+            Not found any transactions
+        </div>
+    </div>
+</div>
+<div class="mask" *ngIf="maskShow">
+    <span class="fa fa-cog fa-spin spinner"></span>
+</div>

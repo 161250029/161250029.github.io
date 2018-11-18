@@ -1,0 +1,13 @@
+第一次创建业务网络时，Asset 和 Participant 注册表都是空的。您需要创建 Asset 和 Participant 实例，这些实例将放在注册表中。
+
+Asset 和 Participant 注册表
+之前已经看到了针对 Grower 参与者、Shipment 资产等的模型。现在是时候将这些资源实例化了，它们的实例将位于各自的注册表中。所以资产实例位于 Asset 注册表中，参与者实例位于 Participant 注册表中。
+
+Perishable-network 模型包含一个交易，该交易在 lib/logic.js 模块中实现为一个名为 setupDemo() 的 JavaScript 函数，您可以使用该函数实例化模型，并在 Asset 和 Participant 注册表中创建条目。与手动输入模型相比，这提供了让业务网络更快地利用模板正常运行的一种方法。
+
+我不会在这里介绍 setupDemo() 函数，但我想指出它执行的 3 件事：
+
+创建模型中的所有资产和参与者的实例
+设置这些实例上的属性值
+将实例存储在它们各自的注册表中
+鼓励您在编辑器中打开 lib/logic.js 文件并自行查看它。

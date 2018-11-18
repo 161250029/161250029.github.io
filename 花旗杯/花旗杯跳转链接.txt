@@ -1,0 +1,12 @@
+https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?countryCode=US&businessCode=GCB&locale=en_US&state=1123&response_type=code&scope=payees&client_id=6bb59a64-e285-4e3a-b448-7f131d388fab&redirect_uri=http://127.0.0.1:8000/ipnet/login
+
+https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?countryCode=US&businessCode=GCB&locale=en_US&state=1123&response_type=code&scope=payees&client_id=330ad3b7-650c-4515-a628-4ca95b0f7514&redirect_uri=http://127.0.0.1:8000/ipnet/loading
+
+https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?countryCode=US&businessCode=GCB&locale=en_US&state=1123&response_type=code&scope=payees&client_id=48b5ab42-7365-4693-8a5f-b8dd3ac1fcea&redirect_uri=http://127.0.0.1:8000/ipnet/Bank-applicationFinish
+
+
+https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?countryCode=HK&businessCode=GCB&locale=en_HK&state=1234&response_type=code&scope=customers_profiles accounts_details_transactions payees personal_domestic_transfers cards&client_id=2f3c5af8-34c5-4751-b1dd-9be322aee7c9&redirect_uri=https://www.baidu.com/
+
+https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?countryCode=US&businessCode=GCB&locale=en_US&state=12093&response_type=code&scope=payees&client_id=9f00e22b-70ba-4321-9141-e97a7ed74382&redirect_uri=http://localhost:8000/ipnet/loading
+
+https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?countryCode=US&businessCode=GCB&locale=en_US&state=12093&response_type=code&scope=payees&client_id=c8509f66-9298-4713-a229-37b4a01d7e50&redirect_uri=http://localhost:8000/ipnet/Bank-applicationFinish

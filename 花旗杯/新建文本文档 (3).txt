@@ -1,0 +1,8 @@
+https://github.com/jsphLim/ViolationSystem
+https://github.com/anda0109/pet-shop
+https://github.com/paperen/eth-booklibrary      truffle框架   solidity语言
+https://github.com/shakenetwork/etherex          react前端框架
+
+
+
+    OpenBazzar是一个结合了ebay与BitTorrentt特点的去中心化商品交易市场，使用比特币进行交易，既没有费用，也不用担心受到审查。因此相对于易趣与亚马逊这些提供中心化服务的电子商务平台，通过OpenBazz不需要支付高额费用、不需要担心平台收集个人信息致使个人信息泄露或被转卖用作其他用途。2015年，获得了由科技行业的两大风投公司Andreessen Horowitz和Union Square Ventures 投资。
