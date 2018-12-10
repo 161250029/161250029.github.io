@@ -64,3 +64,50 @@ a.x = 20;
 Console.WriteLine(b.x);
 
 如果 Point 是类，则输出 20，因为 a 和 b 引用同一对象。 如果 Point 是结构，则输出 10，因为将 a 赋值给 b 创建了值副本，而此副本不受后面对 a.x 的赋值的影响。
+
+
+8. 多维数组
+数组类型的维数（亦称为数组类型的秩）是 1 与数组类型方括号内的逗号数量相加的结果。 以下示例分别分配一维、二维、三维数组。
+int[] a1 = new int[10];
+int[,] a2 = new int[10, 5];
+int[,,] a3 = new int[10, 5, 2];
+
+9. 委托
+下面的示例声明并使用 Function 委托类型。
+using System;
+delegate double Function(double x);
+class Multiplier
+{
+    double factor;
+    public Multiplier(double factor) 
+    {
+        this.factor = factor;
+    }
+    public double Multiply(double x) 
+    {
+        return x * factor;
+    }
+}
+class DelegateExample
+{
+    static double Square(double x) 
+    {
+        return x * x;
+    }
+    static double[] Apply(double[] a, Function f) 
+    {
+        double[] result = new double[a.Length];
+        for (int i = 0; i < a.Length; i++) result[i] = f(a[i]);
+        return result;
+    }
+    static void Main() 
+    {
+        double[] a = {0.0, 0.5, 1.0};
+        double[] squares = Apply(a, Square);
+        double[] sines = Apply(a, Math.Sin);
+        Multiplier m = new Multiplier(2.0);
+        double[] doubles =  Apply(a, m.Multiply);
+    }
+}
+Function 委托类型实例可以引用需要使用 double 自变量并返回 double 值的方法。 Apply 方法将给定的函数应用于 double[] 的元素，从而返回包含结果的 double[]。 在 Main 方法中，Apply 用于向 double[] 应用三个不同的函数。
+委托的一个有趣且有用的属性是，它不知道也不关心所引用的方法的类；只关心引用的方法是否具有与委托相同的参数和返回类型。
