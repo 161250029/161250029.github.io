@@ -1,0 +1,37 @@
+1.同一个项目下的c#文件只能有一个main出口，否则会报错；
+2.引用参数类型使用
+using System;
+class RefExample
+{
+    static void Swap(ref int x, ref int y) 
+    {
+        int temp = x;
+        x = y;
+        y = temp;
+    }
+    public static void SwapExample() 
+    {
+        int i = 1, j = 2;
+        Swap(ref i, ref j);                  //这里需要画着重号，因为已经给i ， j赋过值 ， 故不需要在加上int属性。
+        Console.WriteLine($"{i} {j}");    // Outputs "2 1"
+    }
+}
+
+3.out参数类型引用
+using System;
+    class OutExample
+    {
+        static void Divide(int x, int y, out int result, out int remainder) 
+        {
+            result = x / y;
+            remainder = x % y;
+        }
+        public static void OutUsage() 
+        {
+            Divide(10, 3, out int res, out int rem);                //out参数相当于只是个存值的容器，不需要提前对它赋值，所以需要注明属性
+            Console.WriteLine("{0} {1}", res, rem);	// Outputs "3 1"
+        }
+    }
+}
+4. out 和 ref的区别：
+输出参数与引用参数类似，不同之处在于，不要求向调用方提供的自变量显式赋值。 输出参数使用 out 修饰符进行声明。
