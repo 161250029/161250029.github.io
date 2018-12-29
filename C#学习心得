@@ -1,0 +1,113 @@
+1.同一个项目下的c#文件只能有一个main出口，否则会报错；
+2.引用参数类型使用
+using System;
+class RefExample
+{
+    static void Swap(ref int x, ref int y) 
+    {
+        int temp = x;
+        x = y;
+        y = temp;
+    }
+    public static void SwapExample() 
+    {
+        int i = 1, j = 2;
+        Swap(ref i, ref j);                  //这里需要画着重号，因为已经给i ， j赋过值 ， 故不需要在加上int属性。
+        Console.WriteLine($"{i} {j}");    // Outputs "2 1"
+    }
+}
+
+3.out参数类型引用
+using System;
+    class OutExample
+    {
+        static void Divide(int x, int y, out int result, out int remainder) 
+        {
+            result = x / y;
+            remainder = x % y;
+        }
+        public static void OutUsage() 
+        {
+            Divide(10, 3, out int res, out int rem);                //out参数相当于只是个存值的容器，不需要提前对它赋值，所以需要注明属性
+            Console.WriteLine("{0} {1}", res, rem);	// Outputs "3 1"
+        }
+    }
+}
+4. out 和 ref的区别：
+输出参数与引用参数类似，不同之处在于，不要求向调用方提供的自变量显式赋值。 输出参数使用 out 修饰符进行声明。
+
+5. 属性
+属性是字段的自然扩展。 两者都是包含关联类型的已命名成员，用于访问字段和属性的语法也是一样的。 不过，与字段不同的是，属性不指明存储位置。 相反，属性包含访问器，用于指定在读取或写入属性值时要执行的语句。
+
+属性的声明方式与字段类似，不同之处在于，属性声明以在分隔符 { 和 } 内写入的 get 访问器和/或 set 访问器结束，而不是以分号结束。 同时包含 get 访问器和 set 访问器的属性是读写属性，仅包含 get 访问器的属性是只读属性，仅包含 set 访问器的属性是只写属性。
+
+get 访问器对应于包含属性类型的返回值的无参数方法。 如果在表达式中引用属性，除了作为赋值目标以外，调用的属性 get 访问器还可用于计算属性值。
+
+set 访问器对应于包含一个名为 value 的参数但不含返回类型的方法。 如果将属性引用为赋值目标或 ++/-- 的操作数，将调用 set 访问器（由自变量提供新值）。
+
+List<T> 类声明以下两个属性：Count 和 Capacity（分别是只读和只写属性）。 下面的示例展示了如何使用这些属性。
+List<string> names = new List<string>();
+names.Capacity = 100;   // Invokes set accessor
+int i = names.Count;    // Invokes get accessor
+int j = names.Capacity; // Invokes get accessor
+
+6. 结构
+结构是可以包含数据成员和函数成员的数据结构，这一点与类一样；与类不同的是，结构是值类型，无需进行堆分配。 结构类型的变量直接存储结构数据，而类类型的变量存储对动态分配的对象的引用。 结构类型不支持用户指定的继承，并且所有结构类型均隐式继承自类型 ValueType，后者又隐式继承自 object。
+
+结构对包含值语义的小型数据结构特别有用。 复数、坐标系中的点或字典中的键值对都是结构的典型示例。 对小型数据结构使用结构（而不是类）在应用程序执行的内存分配次数上存在巨大差异。 例如，以下程序创建并初始化包含 100 个点的数组。 通过将 Point 实现为类，可单独实例化 101 个对象，一个对象用于数组，其他所有对象分别用于 100 个元素。
+
+7. 结构和类
+借助类，两个变量可以引用同一对象；因此，对一个变量执行的运算可能会影响另一个变量引用的对象。 借助结构，每个变量都有自己的数据副本；因此，对一个变量执行的运算不会影响另一个变量。 例如，以下代码片段生成的输出取决于 Point 是类还是结构。
+Point a = new Point(10, 10);
+Point b = a;
+a.x = 20;
+Console.WriteLine(b.x);
+
+如果 Point 是类，则输出 20，因为 a 和 b 引用同一对象。 如果 Point 是结构，则输出 10，因为将 a 赋值给 b 创建了值副本，而此副本不受后面对 a.x 的赋值的影响。
+
+
+8. 多维数组
+数组类型的维数（亦称为数组类型的秩）是 1 与数组类型方括号内的逗号数量相加的结果。 以下示例分别分配一维、二维、三维数组。
+int[] a1 = new int[10];
+int[,] a2 = new int[10, 5];
+int[,,] a3 = new int[10, 5, 2];
+
+9. 委托
+下面的示例声明并使用 Function 委托类型。
+using System;
+delegate double Function(double x);
+class Multiplier
+{
+    double factor;
+    public Multiplier(double factor) 
+    {
+        this.factor = factor;
+    }
+    public double Multiply(double x) 
+    {
+        return x * factor;
+    }
+}
+class DelegateExample
+{
+    static double Square(double x) 
+    {
+        return x * x;
+    }
+    static double[] Apply(double[] a, Function f) 
+    {
+        double[] result = new double[a.Length];
+        for (int i = 0; i < a.Length; i++) result[i] = f(a[i]);
+        return result;
+    }
+    static void Main() 
+    {
+        double[] a = {0.0, 0.5, 1.0};
+        double[] squares = Apply(a, Square);
+        double[] sines = Apply(a, Math.Sin);
+        Multiplier m = new Multiplier(2.0);
+        double[] doubles =  Apply(a, m.Multiply);
+    }
+}
+Function 委托类型实例可以引用需要使用 double 自变量并返回 double 值的方法。 Apply 方法将给定的函数应用于 double[] 的元素，从而返回包含结果的 double[]。 在 Main 方法中，Apply 用于向 double[] 应用三个不同的函数。
+委托的一个有趣且有用的属性是，它不知道也不关心所引用的方法的类；只关心引用的方法是否具有与委托相同的参数和返回类型。
