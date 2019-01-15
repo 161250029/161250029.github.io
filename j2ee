@@ -1,0 +1,1 @@
+encodeUrl（url）会将当前的sessionid加在链接后面
