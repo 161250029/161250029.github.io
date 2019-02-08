@@ -1,0 +1,7 @@
+1. 在idea的module模块中添加hibernate后,点击加号选项添加hibernate.cfg.xml配置文件。（注意：就使用默认的class path路径（src）下，不要修改路径
+到web文件路径下）；
+2. 填写完整hibernate.cfg.xml配置文件信息，映射文件直接用注解替代；
+3. 对于hibernateutil类中获得会话类session类时，不能通过sessionfactory.getCurrentSession方法获得，（会报noCurrentSession的错）。我是通过
+使用opensession方法来获得session会话类的。
+参考的部分博客：
+https://blog.csdn.net/caixiexin/article/details/7020149。
